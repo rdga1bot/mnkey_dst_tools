@@ -472,6 +472,11 @@ bool Init(const char* overlay_path, int /*zone_ox*/, int /*zone_oz*/) {
         s_terrain.InitGroundBaked("game/data/textures/md_ground_baked.dds");
         s_terrain.InitSteepnessSmoothed("game/data/textures/md_ground_steepness_smoothed.png");
         s_terrain.InitBiomeBlend("game/data/textures/md_biome_blend.png");
+        // task-terrain-kenshi-parity (2026-09-26): same mirror pattern as
+        // this file's other Init* call sites -- see scene_render.cpp's own
+        // InitKbi1BlendLookup/UploadBiomeLayersTex call sites' doc comment.
+        s_terrain.InitKbi1BlendLookup("game/data/textures/md_kbi1_blend_lookup.png");
+        s_terrain.UploadBiomeLayersTex();
         s_terrain.InitOverlayMask("game/data/textures/md_overlay_mask.png");
         // Zone-layer LUT + the static world heightmap are atlas-sourced
         // (TerrainAtlas is already loaded by main.cpp before Init() is
